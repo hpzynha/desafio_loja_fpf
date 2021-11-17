@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "563411721157",
+    "project_id": "desafio-loja-virtual-fpf",
+    "storage_bucket": "desafio-loja-virtual-fpf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563411721157:android:ef1452fa46f681da5949ac",
+        "android_client_info": {
+          "package_name": "com.example.desafio_loja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563411721157-84nrrh98pfgj2vov5iltbtcmnu53k8ho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.desafio_loja",
+            "certificate_hash": "194ba7d0a2bcc7fab7b7c50c7ca6852713345bc0"
+          }
+        },
+        {
+          "client_id": "563411721157-hltlvnd569pour4483oaeht2nvg427oj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpvW1hzyo2pVzD4qAy-pQASEav5B9r-6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563411721157-hltlvnd569pour4483oaeht2nvg427oj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
