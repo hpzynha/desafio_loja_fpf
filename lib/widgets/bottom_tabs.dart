@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabs extends StatefulWidget {
@@ -57,10 +58,12 @@ class _BottomTabsState extends State<BottomTabs> {
             },
           ),
           BottomTabBtn(
+            // Erro Concertar o Botao de logout antes de enviar
             imagePath: "assets/images/tab_logout.png",
             selected: _selectedTab == 3 ? true : false,
             onPressed: () {
-              widget.tabPressed(3);
+              // Logout
+              FirebaseAuth.instance.signOut();
             },
           ),
         ],

@@ -17,7 +17,7 @@ class _ImageSwipeState extends State<ImageSwipe> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 300,
       child: Stack(
         children: [
           PageView(

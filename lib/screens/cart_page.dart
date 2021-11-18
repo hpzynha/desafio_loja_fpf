@@ -4,18 +4,25 @@ import 'package:desafio_loja/services/firebase_services.dart';
 import 'package:desafio_loja/widgets/custom_action_bar.dart';
 import 'package:flutter/material.dart';
 
-class SavedTab extends StatelessWidget {
-  final FirebaseServices _firebaseServices = FirebaseServices();
+import '../constants.dart';
+
+class CartPage extends StatefulWidget {
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  FirebaseServices _firebaseServices = FirebaseServices();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
+    return Scaffold(
+      body: Stack(
         children: [
           FutureBuilder<QuerySnapshot>(
             future: _firebaseServices.userRef
                 .doc(_firebaseServices.getUserId())
-                .collection("Saved")
+                .collection("Cart")
                 .get(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
@@ -159,9 +166,9 @@ class SavedTab extends StatelessWidget {
             },
           ),
           CustomActionBar(
-            hasBackArrow: false,
+            hasBackArrow: true,
             hasTitle: true,
-            title: "Items Salvos",
+            title: "Carrinho",
           ),
         ],
       ),

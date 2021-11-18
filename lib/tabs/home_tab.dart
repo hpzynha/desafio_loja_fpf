@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:desafio_loja/screens/product_page.dart';
 import 'package:desafio_loja/widgets/custom_action_bar.dart';
+import 'package:desafio_loja/widgets/product_cart.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -33,8 +34,12 @@ class HomeTab extends StatelessWidget {
                       bottom: 12,
                     ),
                     children: snapshot.data!.docs.map((document) {
-                      return GestureDetector(
-                        onTap: () {
+                      return ProductCart(
+                        productId: document.id,
+                        imageUrl: document['images'][0],
+                        title: document['name'],
+                        price: "R\$ ${document['price']}",
+                        onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -43,55 +48,6 @@ class HomeTab extends StatelessWidget {
                                 ),
                               ));
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12)),
-                          height: 350,
-                          margin: EdgeInsets.symmetric(
-                            vertical: 12,
-                            horizontal: 24,
-                          ),
-                          child: Stack(
-                            children: [
-                              Container(
-                                height: 350,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.network(
-                                    "${document['images'][0]}",
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(24),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        document['name'] ?? "Product Name",
-                                        style: Constants.regularHeading,
-                                      ),
-                                      Text(
-                                        "\$${document['price']}",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Theme.of(context).accentColor,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
                       );
                     }).toList());
               }

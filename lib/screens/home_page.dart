@@ -1,3 +1,4 @@
+import 'package:desafio_loja/services/firebase_services.dart';
 import 'package:desafio_loja/tabs/home_tab.dart';
 import 'package:desafio_loja/tabs/saved_tab.dart';
 import 'package:desafio_loja/tabs/search_tab.dart';
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseServices _firebaseServices = FirebaseServices();
+
   PageController? _tabsPageController;
   int _selectedTab = 0;
 
@@ -44,7 +47,7 @@ class _HomePageState extends State<HomePage> {
               },
               children: [
                 HomeTab(),
-                Searchtab(),
+                SearchTab(),
                 SavedTab(),
               ],
             ),
