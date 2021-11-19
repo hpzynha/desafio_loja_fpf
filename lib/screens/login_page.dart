@@ -44,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       await Firebase.initializeApp();
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _loginEmail, password: _loginPassword);
+
       // return null;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

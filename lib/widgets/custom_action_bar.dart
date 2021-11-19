@@ -99,7 +99,8 @@ class CustomActionBar extends StatelessWidget {
                       int _totalItems = 0;
 
                       if (snapshot.connectionState == ConnectionState.active) {
-                        List _documents = snapshot.data!.docs;
+                        List _documents =
+                            (snapshot?.data as QuerySnapshot).docs;
                         _totalItems = _documents.length;
                       }
                       return Text(
