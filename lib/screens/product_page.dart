@@ -65,11 +65,11 @@ class _ProductPageState extends State<ProductPage> {
                 DocumentSnapshot<Object?> documentData =
                     snapshot.data as DocumentSnapshot;
 
-                // List of Images
+                // Lista de imagens
                 List imageList = documentData['images'];
                 List productsSizes = documentData['size'];
 
-                // set an initial size (corrigir o bug do primeiro size selecionado no firebase)
+                // set an initial size (corrigindo o bug do primeiro size selecionado no firebase)
                 _selectedProductSize = productsSizes[0];
 
                 return ListView(

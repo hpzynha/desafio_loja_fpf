@@ -25,9 +25,9 @@ class HomeTab extends StatelessWidget {
                   ),
                 );
               }
-              // Collection data ready to display
+              // coleção "data" pronta pra conectar
               if (snapshot.connectionState == ConnectionState.done) {
-                // Display the data inside a list view
+                // Mostra a coleção dentro da listView
                 return ListView(
                     padding: EdgeInsets.only(
                       top: 108,

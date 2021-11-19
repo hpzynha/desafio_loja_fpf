@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submitForm() async {
-    // Set the form to loading state
+    // Set o formulario do loading state
     setState(() {
       _loginFormLoading = true;
     });
@@ -66,14 +66,14 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomePage()));
 
-    // Run the create account method
+    // Run o metodo de criação de conta
     String? _loginFeedback = await _loginAccount();
     // Se a String for null, receber um erro quando fizer o login
     // If the string is not null, we got error while login.
     if (_loginFeedback != null) {
       _alertDialogBuilder(_loginFeedback);
 
-      // Set the form to regular state [not loading].
+      // Set to formulario para um state regular[not loading].
       setState(() {
         _loginFormLoading = false;
       });
@@ -83,11 +83,11 @@ class _LoginPageState extends State<LoginPage> {
   // Default Form Loading State
   bool _loginFormLoading = false;
 
-  // Form Input Field Values
+  // valores dos campos de input do formulario
   String _loginEmail = "";
   String _loginPassword = "";
 
-  // Focus Node for input fields
+  // Focus Node para proximo inpunt
   late FocusNode _passwordFocusNode;
 
   @override

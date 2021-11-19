@@ -10,7 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // Esse widget é o root da aplicação
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

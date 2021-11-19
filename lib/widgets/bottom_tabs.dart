@@ -58,7 +58,6 @@ class _BottomTabsState extends State<BottomTabs> {
             },
           ),
           BottomTabBtn(
-            // Erro Concertar o Botao de logout antes de enviar
             imagePath: "assets/images/tab_logout.png",
             selected: _selectedTab == 3 ? true : false,
             onPressed: () {

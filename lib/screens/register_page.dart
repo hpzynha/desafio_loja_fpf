@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
         });
   }
 
-  // Create a new user account
+  // Criar um novo usuário
   Future<String?> _createAccount() async {
     try {
       await Firebase.initializeApp();
@@ -56,24 +56,24 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _submitForm() async {
-    // Set the form to loading state
+    // Set o formulario do loading state
     setState(() {
       _registerFormLoading = true;
     });
 
-    // Run the create account method
+    // Run o metodo de criação de conta
     String? _createAccountFeedback = await _createAccount();
 
-    // If the string is not null, we got error while create account.
+    // Se a string não for null, dá erro quando criando a conta
     if (_createAccountFeedback != null) {
       _alertDialogBuilder(_createAccountFeedback);
 
-      // Set the form to regular state [not loading].
+      // Set to formulario para um state regular[not loading].
       setState(() {
         _registerFormLoading = false;
       });
     } else {
-      // The String was null, user is logged in.
+      // A String == null, usuario logado
       // Navigator.pop(context);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => LoginPage()));
@@ -83,11 +83,11 @@ class _RegisterPageState extends State<RegisterPage> {
   // Default Form Loading State
   bool _registerFormLoading = false;
 
-  // Form Input Field Values
+  // valores do campo de input
   String _registerEmail = "";
   String _registerPassword = "";
 
-  // Focus Node for input fields
+  // Focus Node para input fields
   late FocusNode _passwordFocusNode;
 
   @override

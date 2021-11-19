@@ -23,7 +23,7 @@ class LandingPage extends StatelessWidget {
         }
         // Conection Initialized - Firebasse App is running
         if (snapshot.connectionState == ConnectionState.done) {
-          // StreamBuilder can check the login state live
+          // StreamBuilder permite checar o login state ao vivo.
           return StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (contex, streamSnapshot) {
@@ -35,22 +35,22 @@ class LandingPage extends StatelessWidget {
                   ),
                 );
               }
-              // Connection state active - Do the user login check inside the if statement
+              // Connection state active - O usuario fez o login
               if (streamSnapshot.connectionState == ConnectionState.active) {
                 // Get the User
                 // Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
                 Object? _user = streamSnapshot.data;
-                // If the user is null, we're not logged in
+                // If the user is null, não está logado
                 if (_user == null) {
-                  // User not logged in, head to login
+                  // User not logged in, vai pro login
                   return LoginPage();
                 } else {
-                  // The user is logged in, head to home page
+                  // The user is logged in,vai pra homepage
                   return HomePage();
                 }
               }
 
-              // checking the auth starte - Loading
+              // checando o auth start - Loading
               return Scaffold(
                 body: Center(
                   child: Text(
@@ -62,7 +62,7 @@ class LandingPage extends StatelessWidget {
             },
           );
         }
-        //connection to firebase - Loading
+        //conectando ao firebase - Loading
         return Scaffold(
           body: Center(
             child: Text(
