@@ -4,8 +4,6 @@ import 'package:desafio_loja/services/firebase_services.dart';
 import 'package:desafio_loja/widgets/custom_action_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
 class CartPage extends StatefulWidget {
   @override
   _CartPageState createState() => _CartPageState();
@@ -65,7 +63,7 @@ class _CartPageState extends State<CartPage> {
                               }
                               if (productSnap.connectionState ==
                                   ConnectionState.done) {
-                                Map _productMap = productSnap.data.data();
+                                Map productMap = productSnap.data.data();
 
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -82,7 +80,7 @@ class _CartPageState extends State<CartPage> {
                                           borderRadius:
                                               BorderRadius.circular(8),
                                           child: Image.network(
-                                            "${_productMap['images'][0]}",
+                                            "${productMap['images'][0]}",
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -98,7 +96,7 @@ class _CartPageState extends State<CartPage> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "${_productMap['name']}",
+                                              "${productMap['name']}",
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.black,
@@ -111,7 +109,7 @@ class _CartPageState extends State<CartPage> {
                                                 vertical: 4.0,
                                               ),
                                               child: Text(
-                                                "\$${_productMap['price']}",
+                                                "\$${productMap['price']}",
                                                 style: TextStyle(
                                                     fontSize: 16.0,
                                                     color: Theme.of(context)
@@ -137,12 +135,71 @@ class _CartPageState extends State<CartPage> {
                                               MainAxisAlignment.end,
                                           children: [
                                             IconButton(
-                                              onPressed: () {},
-                                              icon: Icon(Icons.delete),
+                                              icon: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              ),
+                                              onPressed: () {
+                                                showDialog(
+                                                    context: context,
+                                                    barrierDismissible: true,
+                                                    builder:
+                                                        (BuildContext ctx) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            "Tem certeza?"),
+                                                        content: Text(
+                                                            "Essa ação deletara o produo"),
+                                                        actions: [
+                                                          RaisedButton(
+                                                              color:
+                                                                  Colors.black,
+                                                              child: Text(
+                                                                'Cancelar',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                              onPressed: () {
+                                                                Navigator.of(
+                                                                        ctx)
+                                                                    .pop();
+                                                              }),
+                                                          RaisedButton(
+                                                              color: Colors.red,
+                                                              child: Text(
+                                                                'Remover',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                              onPressed: () {
+                                                                FirebaseFirestore
+                                                                    .instance
+                                                                    .collection(
+                                                                        'Products')
+                                                                    .doc(_firebaseServices
+                                                                        .getUserId())
+                                                                    .collection(
+                                                                        'UserProducts')
+                                                                    .doc(
+                                                                        document
+                                                                            .id)
+                                                                    .delete()
+                                                                    .catchError(
+                                                                      (e) =>
+                                                                          print(
+                                                                              e),
+                                                                    );
+                                                              })
+                                                        ],
+                                                      );
+                                                    });
+                                              },
                                             )
                                           ],
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 );

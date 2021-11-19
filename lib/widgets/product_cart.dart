@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:desafio_loja/screens/product_page.dart';
-
 import '../constants.dart';
 
 class ProductCart extends StatelessWidget {
@@ -66,7 +64,7 @@ class ProductCart extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
