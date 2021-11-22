@@ -18,7 +18,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-O devquiz é um jogo de perguntas para avaliar os seus conhecimentos sobre o mundo de desenvolvimento.
+
 
 ## 🔖 Layout
 
